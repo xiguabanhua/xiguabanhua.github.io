@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link rel="stylesheet" type="text/less" href="css/9.less"> -->
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link  rel="stylesheet" type="text/css" href="css/9.css">
+</head>
+<body>
+	<header>
+		<div id="center" class="center"><img src="images/logo.png"></div>		
+		<div class="center right">
+			<div class="search">
+				<i class="fa fa-search"></i>
+				<input type="text">
+			</div>
+			<div class="loading">
+				<i class="fa fa-user  fa-lg"></i>
+				<span>登录</span>
+			</div>
+		</div>	
+	</header>
+	<article>
+		<aside>
+			<section>
+				<div class="user-face">
+					<div class="face">
+						<span></span>
+					</div>
+					<a href="javascript:;">ABC123</a>
+				</div>
+				<div class="user-info">
+					<ul>
+						<li>
+							<p>110</p>
+							<span>收藏</span>
+						</li>
+						<li>
+							<p>313</p>
+							<span>粉丝</span>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<ul class="tab">
+					<li><a href="javascript:;"><i class="fa fa-book"></i>个人报表</a>
+						<ul>
+							<li><a href="javascript:;"><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-folder"></i>文件一</a></li>
+							<li>
+								<a href="javascript:;"><i class="fa fa-angle-down fa-lg"></i><i class="fa fa-folder"></i>文件二</a>
+								<ul>
+									<li>
+										<a href="javascript:;"><i class="fa fa-file-text-o"></i>文档1</a>
+									</li>
+									<li>
+										<a href="javascript:;"><i class="fa fa-file-text-o"></i>文档2</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="javascript:;"><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-folder"></i>文件三</a>
+							</li>
+						</ul>
+					</li>
+					<li><a href="javascript:;"><i class="fa fa-star"></i>个人收藏</a></li>
+					<li><a href="javascript:;"><i class="fa  fa-cloud-upload"></i>我的分享</a></li>
+					<li><a href="javascript:;"><i class="fa fa-star"></i>图库</a></li>
+					<li><a href="javascript:;"><i class="fa fa-star"></i>成长记录</a></li>
+					<li><a href="javascript:;"><i class="fa fa-pencil-square-o"></i>账户信息</a></li>
+				</ul>
+			</section>
+		</aside>
+		<div class="content">
+			<div class="header-select">
+				<ul>
+					<li><a href="javascript:;">C站</a></li> /
+					<li><a href="javascript:;">个人报表</a></li> /
+					<li><a href="javascript:;">文件一</a></li> /
+					<li><a href="javascript:;">文档一</a></li>
+				</ul>
+			</div>
+			<div class="content-detail">
+				<div class="search-detail">
+					<div class="search-project">
+						<span>查询项</span>
+						<select>
+							<option>第一项</option>
+							<option>第二项</option>
+						</select>
+					</div>
+					<div class="both-people">
+						<div>
+							<span>买方</span>
+							<select>
+								<option>小A</option>
+							</select>
+							<span>卖方</span>
+							<select>
+								<option>小B</option>
+							</select>
+						</div>
+						<div><img src="./images/change.png"></div>
+					</div>
+					<div class="time-and-other">
+						<span>日期</span>
+						<input type="date" name="" value="2016-04-01">
+						<span>总耗时</span>
+						<select>
+								<option>8天</option>
+						</select>
+						<span>人数</span>
+						<select>
+								<option>10天</option>
+						</select>
+						
+						<span>成交项</span>
+						<select>
+								<option>10项</option>
+						</select>
+					</div>
+					<input type="submit" name="搜索" value="搜索">
+					<div class ="clearfix"></div>
+				</div>
+				<div class="search-history">
+				<!-- 	<button><i class=""></i></button> -->
+					<ul>
+						<li>
+							<time>10:00 am</time>
+							<p>
+								￥<strong>1200</strong>
+							</p>	
+						</li>
+						<li>
+							<time>11：00 am</time>
+							<p>
+								￥<strong>1300</strong>
+							</p>
+						</li>
+						<li>
+						<time>12:00 am</time>
+							<p>
+								￥<strong>1200</strong>
+							</p>
+						</li>
+						<li>
+						<time>01:00 pm</time>
+							<p>
+								￥<strong>1500</strong>
+							</p>
+						</li>
+						<li>
+						<time>02:00</time>
+							<p>
+								￥<strong>1500</strong>
+							</p>
+						</li>
+						<li>
+						<time>03:00</time>
+							<p>
+								￥<strong>1800</strong>
+							</p>
+						</li>
+					</ul>
+					<button><i class=""></i></button>
+					<div class="search-ca"></div>
+					<!-- <div class ="clearfix"></div> -->
+				</div>
+				<section class="count"></section>
+				<section class="project"></section>
+				<section class="date-and-sort"></section>
+			</div>
+		</div>
+		<div class ="clearfix"></div>
+	</article>
+</body>
+<!-- 
+<script type="text/javascript">
+
+	var $=function(selector){
+		return document.querySelectorAll(selector);
+	}
+	console.log($("#center"));
+
+	(function(a){
+	    console.log(a);
+	    function a(){};
+	    a=999;
+	    console.log(a);
+	})(1000);
+
+
+	var a=new Object();
+	    a.const=1;
+	    a.getName=function(){
+	    alert(this.const);
+	    }
+	
+	a.getName();
+
+	var b=new Object();
+	b.const=2;
+	b.fn=a.getName;
+	b.fn();
+
+	var c=2;
+	function A(){
+		// var d ={
+		// 	c:4
+		// }
+		var c=3;
+		function B(){
+			console.log(this.c);
+		}
+		B();
+	}
+	
+	A();
+
+	var str="abc";
+	var arr=str.split("");
+	console.log(arr);
+	console.log(arr.join(" "));
+
+</script> -->
+</html>

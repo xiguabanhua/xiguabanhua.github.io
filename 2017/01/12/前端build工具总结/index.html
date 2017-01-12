@@ -1,0 +1,810 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="-自动化构建 -前端工程化 -build," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="各种前端build工具
+有段时间我比较混乱，对前端build工具本能上就给它们设置了一个高的入门门槛（可能与刚开始接触的时候，师兄给一份巨大的配置文件给我看熟悉，那时候还不知道node.js是什么东东），所以就~赶脚大佬好高上啊，忘了撸起袖子就是干啊。
+
+
+下面的build总结来源于这篇文章：我终于弄懂了各种前端build工具即使对于一些经验丰富的开发者来说，诸多的前端工具还是会让他们感到头痛，例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="各种前端build工具">
+<meta property="og:url" content="http://yoursite.com/2017/01/12/前端build工具总结/index.html">
+<meta property="og:site_name" content="huangqin blog">
+<meta property="og:description" content="各种前端build工具
+有段时间我比较混乱，对前端build工具本能上就给它们设置了一个高的入门门槛（可能与刚开始接触的时候，师兄给一份巨大的配置文件给我看熟悉，那时候还不知道node.js是什么东东），所以就~赶脚大佬好高上啊，忘了撸起袖子就是干啊。
+
+
+下面的build总结来源于这篇文章：我终于弄懂了各种前端build工具即使对于一些经验丰富的开发者来说，诸多的前端工具还是会让他们感到头痛，例">
+<meta property="og:image" content="http://ojncirxy3.bkt.clouddn.com/build.jpg">
+<meta property="og:image" content="http://ojncirxy3.bkt.clouddn.com/build2.jpg">
+<meta property="og:image" content="http://ojncirxy3.bkt.clouddn.com/build3.jpg">
+<meta property="og:image" content="http://ojncirxy3.bkt.clouddn.com/build4.jpg">
+<meta property="og:image" content="http://ojncirxy3.bkt.clouddn.com/build5.jpg">
+<meta property="og:updated_time" content="2017-01-12T03:52:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="各种前端build工具">
+<meta name="twitter:description" content="各种前端build工具
+有段时间我比较混乱，对前端build工具本能上就给它们设置了一个高的入门门槛（可能与刚开始接触的时候，师兄给一份巨大的配置文件给我看熟悉，那时候还不知道node.js是什么东东），所以就~赶脚大佬好高上啊，忘了撸起袖子就是干啊。
+
+
+下面的build总结来源于这篇文章：我终于弄懂了各种前端build工具即使对于一些经验丰富的开发者来说，诸多的前端工具还是会让他们感到头痛，例">
+<meta name="twitter:image" content="http://ojncirxy3.bkt.clouddn.com/build.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 各种前端build工具 | huangqin blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?a3c07c9690c109e0dc3b9ab374b20b5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">huangqin blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search" rel="section">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                各种前端build工具
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-12T10:28:08+08:00" content="2017-01-12">
+              2017-01-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/12/前端build工具总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/12/前端build工具总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/12/前端build工具总结/" class="leancloud_visitors" data-flag-title="各种前端build工具">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="各种前端build工具"><a href="#各种前端build工具" class="headerlink" title="各种前端build工具"></a>各种前端build工具</h3><blockquote>
+<p>有段时间我比较混乱，对前端build工具本能上就给它们设置了一个高的入门门槛（可能与刚开始接触的时候，师兄给一份巨大的配置文件给我看熟悉，那时候还不知道node.js是什么东东），所以就~赶脚大佬好高上啊，忘了撸起袖子就是干啊。</p>
+</blockquote>
+<hr>
+<h2 id="下面的build总结来源于这篇文章：我终于弄懂了各种前端build工具"><a href="#下面的build总结来源于这篇文章：我终于弄懂了各种前端build工具" class="headerlink" title="下面的build总结来源于这篇文章：我终于弄懂了各种前端build工具"></a>下面的build总结来源于这篇文章：<a href="www.sdk.cn/news/5412">我终于弄懂了各种前端build工具</a></h2><p><img src="http://ojncirxy3.bkt.clouddn.com/build.jpg" alt="image"><br>即使对于一些经验丰富的开发者来说，诸多的前端工具还是会让他们感到头痛，例如这篇文章作者。解决这个问题的最好办法，就是在概念上理解他们的工作方式，以及他们之间相互配合的方式。</p>
+<h3 id="不要被各种专业名词唬住"><a href="#不要被各种专业名词唬住" class="headerlink" title="不要被各种专业名词唬住"></a>不要被各种专业名词唬住</h3><p>Node, NPM, Grunt, Gulp, Bower, Webpack, Browserify, Yeoman, Brunch……诸多的名词让你一时间感到手足无措，好像根本学不完。</p>
+<p>其实关键就是，不要被它们唬住。要知道，所有这些工具，其最初的设计目的，<strong>==都是要让你的工作变得更简单==</strong>。</p>
+<p>要想弄明白这些工具是什么、如何工作以及为何要使用它们，你其实只需要抓住少数几个核心概念。</p>
+<h3 id="概念1：build工具的两大核心功能，就是“安装vs做事”"><a href="#概念1：build工具的两大核心功能，就是“安装vs做事”" class="headerlink" title="概念1：build工具的两大核心功能，就是“安装vs做事”"></a>概念1：build工具的两大核心功能，就是“安装vs做事”</h3><p>从本质上说，开发工具做的事情就两个</p>
+<ul>
+<li>帮你安装东西</li>
+<li>帮你做事</li>
+</ul>
+<p>安装类的工具，例如npm、Bower和Yeoman几乎什么东西都能装，它们可以用来安装前端库，例如Angular.js或是React.js。它们还可以为你的开发环境安装服务器。它们可以安装测试库。它们甚至可以帮你安装其他的前端开发工具和开发工具所带的插件等。</p>
+<p>简而言之，任何你能想到的与代码有关的东西，它们都能安装。</p>
+<p>众所周知，现在前端开发，早不是三剑客的形式了。基于node.js的运行开发环境，在package.json中可以看到各种安装的库，不过一般还是安装前端开发工具居多（这类工具帮我们把事情做得简单）</p>
+<p>而帮你做事类的工具，例如Grunt、Webpack、Require.js、Brunchu和Gulp则更加复杂一点。这类工具的目标，是在web开发中帮你完成自动化。有的时候，这类工具所做的事情，被称为“任务（task）”。</p>
+<p>为了完成这些任务，这类工具经常需要自己的包和插件生态。每一个工具都会使用不同的方式来完成任务。这些工具所做的事情也不尽相同。一些工具，擅长处理那些你所指定的任务，例如Grunt和Gulp等工具。还有一些工具，只只专注于一件事情，例如处理JavaScript的依赖，例如Browserify和Require.js等工具。</p>
+<p>有的时候，你在一个项目之中可能需要使用多种工具。例如，我就曾在一个项目中使用了不同的工具来将下列任务进行自动化处理：</p>
+<ol>
+<li>在一个文件中替换文本字符串</li>
+<li>创建文件夹，并且将文件转移到这些文件夹中</li>
+<li>用一条单一命令运行单元测试</li>
+<li>在我保存文件的时候刷新浏览器</li>
+<li>所有JavaScript文件整合为一个文件，将所有CSS文件整合为一个文件</li>
+<li>对所有JavaScript和CSS进行简化处理</li>
+<li>在html页面中修改script标签的位置</li>
+</ol>
+<p>==做事类的工具这么多，而且它们的插件更多，如何知道我们需要什么插件，我们项目需要用什么，我感觉这是个新手不能掌握的。==</p>
+<p>在你理解了前端工具分为安装类工具和帮你做事的工具之后，你就可以轻松的对它们进行归类：<br><img src="http://ojncirxy3.bkt.clouddn.com/build2.jpg" alt="image"></p>
+<h3 id="概念2：build工具的“祖宗”是Node和npm"><a href="#概念2：build工具的“祖宗”是Node和npm" class="headerlink" title="概念2：build工具的“祖宗”是Node和npm"></a>概念2：build工具的“祖宗”是Node和npm</h3><p>Node和npm负责安装和运行所有这些工具，因此你的所有项目中都会有它们的身影。由于这个原因，很多开发者在安装新的工具之前，都会尽可能的尝试使用这两个工具解决问题。</p>
+<p>它们两个一个负责安装，一个负责帮你做事情。Node是做事工具，而npm则是安装工具。</p>
+<p>npm可以安装Angular.js和React.js等库。它还可以安装服务器，让你的应用在开发阶段可以在本地运行。它还可以安装很多其他工具，帮你完成很多事情，例如简化代码。</p>
+<p>而Node，则是帮你完成事情的，例如运行JavaScript文件，以及服务器等。</p>
+<p>如果你刚刚开始学习，那么Node和npm都是必学的东西。随着你的项目不断丰富，你将会逐渐知道这两个工具的极限能力。当它们无法满足你的需要的时候，就是你需要开始安装其他工具的时候了。==（所以这就是经验）==</p>
+<a id="more"></a>
+<h3 id="概念3：build其实就是production-ready版本的应用"><a href="#概念3：build其实就是production-ready版本的应用" class="headerlink" title="概念3：build其实就是production-ready版本的应用"></a>概念3：build其实就是production-ready版本的应用</h3><p>开发者经常会把JavaScript和CSS拆分成独立的文件。</p>
+<p>独立文件的好处，是让你可以专注于编写针对性较强的代码，让每一部分代码只针对一个问题，以免日后代码多到让你自己都难以管理。但是当你的应用准备好被推向市场的时候，项目内存在多个JavaScript或是CSS文件并不是一个好主意。当用户访问你的网站的时候，每一个文件都需要独立的HTTP请求，这会让站点加载速度下降。</p>
+<p>解决方法就是，给项目创建“build”，它要将所有CSS文件合并成一个文件，然后再合并JavaScript文件。这样一来，你就可以将文件完成最小化。要想创建这个build，你需要使用build工具。</p>
+<p>下图是一个开发阶段的应用，注意到了吗，里面有5个script标签和3个link标签。看看左边，里面有的DEVELOPMENT文件夹中有10个文件。</p>
+<p><img src="http://ojncirxy3.bkt.clouddn.com/build3.jpg" alt="image"><br><em>开发阶段的应用</em></p>
+<p>而下面这种图，则是同一个应用，不过它现在已经处于了bulid阶段。里面的srcipt标签和link标签的数量都编程了一个。而DEVELOPMENT文件夹被PRODUCTION文件夹替代，里面的文件数量也从10个变成了4个。</p>
+<p>应用代码其实并没有变，我们只是把代码变得看上去更简洁而已，这就是所谓的“build”。<br><img src="http://ojncirxy3.bkt.clouddn.com/build4.jpg" alt="image"><br><em>build阶段的应用</em></p>
+<blockquote>
+<p>其实上面例子中把开发阶段css打包后，bulid后是怎么替换掉html文件中的css或js文件剩一个all_in_one文件的，插件和配置我不知道，不过现在就知道了有这样个功能（至于他把一些库都打包比如jQuery和我们的业务代码都在一起，这样做是不是有点欠缺？我们可以把库缓存到cdn等等关于性能问题嘿嘿）</p>
+</blockquote>
+<p>你可能会想，build这东西真的有必要吗？它的作用不过是节省用户几毫秒的时间而已。如果你的站点只有你自己，或者身边少数的几个人在开，那么你不用费劲的做build。但是如果你的站点或是应用有着较高的流量，那么你就必须做build。</p>
+<h3 id="概念4：“安装”和“做事”之间的界限有时会模糊"><a href="#概念4：“安装”和“做事”之间的界限有时会模糊" class="headerlink" title="概念4：“安装”和“做事”之间的界限有时会模糊"></a>概念4：“安装”和“做事”之间的界限有时会模糊</h3><p>没有工具只能做一件事情，而无法做另一件事情。所有工具都是“安装”和“做事”的结合体。但是一般来说，一个工具会有自己的强项，或是强于安装，或是强于做事。</p>
+<p>有的时候，一个安装类工具也能运行文件。npm就是这样，它也能运行命令和脚本，不仅仅是安装文件。（像npm 能运行npm run start npm run build，这些命令怎么来的？npm这个运行环境自带的，后面的实现是node.js和c++,我们会用就好了）</p>
+<h3 id="概念5：“最正确工具组合”这么个东西不存在"><a href="#概念5：“最正确工具组合”这么个东西不存在" class="headerlink" title="概念5：“最正确工具组合”这么个东西不存在"></a>概念5：“最正确工具组合”这么个东西不存在</h3><p>使用哪些工具，完全是你自己说了算的事情。</p>
+<p>你也可以选择什么工具都不用。但是要记住，随着项目的发展，复制、黏贴、整合、开启服务器等事情会让你慢慢手忙脚乱起来。</p>
+<p>你也可以只使用Node和npm，其他工具一概不用。对于新手来说，这种方式很好，但是和上一条一样，慢慢你会开始感到力不从心。</p>
+<p>或者，除了Node和npm之外，你也可以使用少数几个其他工具。那么，你的开发过程将会以Node和npm为核心，然后搭配Grunt和Bower，或是Webpack或是Gulp和Bower。</p>
+<p>使用正确的工具，能够帮你将很多繁琐的事情实现自动化。但是使用工具的代价，就是你需要付出学习成本。==下面会说到如何去慢慢拓展合理使用构建工具的插件==<br><img src="http://ojncirxy3.bkt.clouddn.com/build5.jpg" alt="image"></p>
+<h3 id="概念6：build工具学习成本较高，因此你只需要学习你用的上的工具"><a href="#概念6：build工具学习成本较高，因此你只需要学习你用的上的工具" class="headerlink" title="概念6：build工具学习成本较高，因此你只需要学习你用的上的工具"></a>概念6：build工具学习成本较高，因此你只需要学习你用的上的工具</h3><p>项目开发本身就已经很复杂了，你可能要使用新的语言或是框架。你可能需要应付复杂的业务逻辑。而引入新的工具，只会让你的学习成本变得更高。</p>
+<p>对此，我的建议是，只学习那些你用的上的工具，其他的就先缓一缓吧。</p>
+<p>学习任何一种新东西，最好的方式就是进行实践。例如，不要为了学习Gulp而去学习，你可以在你的项目中去尝试运用。(学以致用)</p>
+<h3 id="概念7：所有build工具目标都一样：通过对大量低技术含量任务完成自动化，让你的工作变得更轻。"><a href="#概念7：所有build工具目标都一样：通过对大量低技术含量任务完成自动化，让你的工作变得更轻。" class="headerlink" title="概念7：所有build工具目标都一样：通过对大量低技术含量任务完成自动化，让你的工作变得更轻。"></a>概念7：所有build工具目标都一样：通过对大量低技术含量任务完成自动化，让你的工作变得更轻。</h3><blockquote>
+<p>按我的理解，不仅是完成自动化，让我们的工作变得轻，自动化构建工具还能有效的解决一些性能优化问题，比如合并打包多个文件成一个文件，那在用户请求的是就是减少http请求文件的次数。在http1.1时代，这是个很重要的性能提升途径。当然在http2.0，就没啥大关系了，因为2能够在一条tcp通道并行发送多条http请求（具体多少？好像是15之内~）</p>
+</blockquote>
+<p>使用build工具最开心的时刻，就是我所谓的“build工具涅槃”时刻，在这个时候，你会觉得自己充分发挥了工具的所有潜力。这个时刻，你是你保存了一个文件，或是运行了一条命令之后，成千上万个任务自动运行的时候。</p>
+<p>如果你的工具依然要求你手动移动文件、更改值、或是运行命令才能获得新的build，那说明你还没有迎来涅槃的时刻。</p>
+<p>使用build工具最大的好处之一，就是在保存了一个文件之后，你就能创建一个新的build，并且将其发送到你的浏览器中。它能够显著的提升前端开发流程的速度。</p>
+<p>那么我们应该在配置和调试build工具的时候，应该付出多少精力？很简单，如果你对当前工具的效果感到满意，那就可以停止配置了。</p>
+<h3 id="概念8：不是你自己的问题，有的时候这些工具的说明文档写的是挺烂的"><a href="#概念8：不是你自己的问题，有的时候这些工具的说明文档写的是挺烂的" class="headerlink" title="概念8：不是你自己的问题，有的时候这些工具的说明文档写的是挺烂的"></a>概念8：不是你自己的问题，有的时候这些工具的说明文档写的是挺烂的</h3><p>很多工具的说明文档写的都很烂。有的时候，连搞清楚工具最基本的功能都是一件很困难的事情。你会发现，很多人都和你有一样的困扰。其实，大部分是英语能力问题，能够流利通读各种英文文档good.</p>
+<p>虽然这样的文档有点让人讨厌，但是同时也给了你一个机会，让你去发挥创意和你的编程能力。(一般的文档都只是复制粘贴一下，它们已经封装好的node.js，并不需要去了解原理，但是出了问题也是脑疼的事情)，所以，有能力自己写一个解决问题的插件啊，node.js啊C++.就上天了就。</p>
+<p>工作就是为了解决问题！嗯。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自动化构建-前端工程化-build/" rel="tag">#-自动化构建 -前端工程化 -build</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/12/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/12/git开发流程/" rel="prev" title="公司使用的git开发流程">
+                公司使用的git开发流程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/01/12/前端build工具总结/"
+     data-title="各种前端build工具"
+     data-content=""
+     data-url="http://yoursite.com/2017/01/12/前端build工具总结/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/12/前端build工具总结/"
+           data-title="各种前端build工具" data-url="http://yoursite.com/2017/01/12/前端build工具总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="huangqin" />
+          <p class="site-author-name" itemprop="name">huangqin</p>
+          <p class="site-description motion-element" itemprop="description">执着的一像素</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#各种前端build工具"><span class="nav-number">1.</span> <span class="nav-text">各种前端build工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面的build总结来源于这篇文章：我终于弄懂了各种前端build工具"><span class="nav-number"></span> <span class="nav-text">下面的build总结来源于这篇文章：我终于弄懂了各种前端build工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不要被各种专业名词唬住"><span class="nav-number">1.</span> <span class="nav-text">不要被各种专业名词唬住</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念1：build工具的两大核心功能，就是“安装vs做事”"><span class="nav-number">2.</span> <span class="nav-text">概念1：build工具的两大核心功能，就是“安装vs做事”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念2：build工具的“祖宗”是Node和npm"><span class="nav-number">3.</span> <span class="nav-text">概念2：build工具的“祖宗”是Node和npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念3：build其实就是production-ready版本的应用"><span class="nav-number">4.</span> <span class="nav-text">概念3：build其实就是production-ready版本的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念4：“安装”和“做事”之间的界限有时会模糊"><span class="nav-number">5.</span> <span class="nav-text">概念4：“安装”和“做事”之间的界限有时会模糊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念5：“最正确工具组合”这么个东西不存在"><span class="nav-number">6.</span> <span class="nav-text">概念5：“最正确工具组合”这么个东西不存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念6：build工具学习成本较高，因此你只需要学习你用的上的工具"><span class="nav-number">7.</span> <span class="nav-text">概念6：build工具学习成本较高，因此你只需要学习你用的上的工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念7：所有build工具目标都一样：通过对大量低技术含量任务完成自动化，让你的工作变得更轻。"><span class="nav-number">8.</span> <span class="nav-text">概念7：所有build工具目标都一样：通过对大量低技术含量任务完成自动化，让你的工作变得更轻。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念8：不是你自己的问题，有的时候这些工具的说明文档写的是挺烂的"><span class="nav-number">9.</span> <span class="nav-text">概念8：不是你自己的问题，有的时候这些工具的说明文档写的是挺烂的</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">huangqin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangqin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("q6qHjBC0RUJzTVHyfow8NWHf-gzGzoHsz", "G5vwD0kelGYQJb5yrvvsbnj9");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

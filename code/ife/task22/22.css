@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-07-31 22:36:09
+ * @version $Id$
+ */
+ .root{
+ 	display: flex;
+ 	display: -webkit-flex;
+ 	flex-direction: row;
+ 	margin:15px 10px;
+ 	padding: 15px 10px;
+ 	border: 1px solid #000;
+	align-items: center;
+	background: #FFF;
+ }
+ .son_1{
+ 	display: flex;
+ 	display: -webkit-flex;
+ 	flex-direction: row;
+ 	margin:15px 10px;
+ 	padding: 15px 10px;
+ 	width: 350px;
+ 	height: 200px;
+ 	border: 1px solid #000;
+ 	align-items: center;
+ 	background: #FFF;
+ }
+
+ .son_2{
+ 	display: flex;
+ 	display: -webkit-flex;
+ 	flex-direction: row;
+ 	margin:15px 10px;
+ 	padding: 15px 10px;
+ 	width: 150px;
+ 	height: 160px;
+ 	border: 1px solid #000;
+ 	box-sizing: border-box;
+ 	align-items: center;
+ 	background: #FFF;
+ }
+ .son_3{
+ 	display: flex;
+ 	display: -webkit-flex;
+ 	flex-direction: row;
+ 	margin:0 10px;
+ 	padding: 15px 10px;
+ 	width: 70px;
+ 	height: 120px;
+ 	border: 1px solid #000;
+ 	box-sizing: border-box;
+ 	align-items: center;
+ 	background: #FFF;
+ }

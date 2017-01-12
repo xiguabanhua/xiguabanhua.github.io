@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-07-26 21:56:28
+ * @version $Id$
+ */
+ div{
+ 	margin-top: 15px;
+ }
+#in-value span,#out-value span{
+	display: inline-block;
+	background-color: #3535D9;
+	font-family: '微软雅黑';
+	color:#FFF;
+	padding: 3px;
+	margin: 15px;
+	height: 30px;
+	line-height: 30px;
+}
+
+#in-value span::before{
+	content: '点击删除';
+	display: none;
+}
+#in-value span:hover::before{
+	display: inline-block;
+}
+
+#in-value span:hover{
+	background-color: #E26B6B;
+}
