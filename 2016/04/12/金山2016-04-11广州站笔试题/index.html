@@ -93,7 +93,7 @@
 
 
 1">
-<meta property="og:updated_time" content="2017-01-12T02:20:03.000Z">
+<meta property="og:updated_time" content="2017-03-15T09:27:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="金山2016.04.11广州站笔试题">
 <meta name="twitter:description" content="题目
@@ -393,8 +393,8 @@
 <li>4.写出两种以上异步加载js的方案思路</li>
 </ul>
 </blockquote>
-<p><strong>(1) defer,只支持IE</strong><br>    defer属性规定是否对脚本进行延迟，直到页面加载为止，有的javascript脚本document.write方法来创建当前的文档内容，其他的脚本就不一定是了<br>    如果你的脚本不会改变文档的内容，可以将defer属性加入到script标签中，以便加快处理文档的速度。因为浏览器知道它将能够安全的读取文档的剩余部分而不用执行脚本，它将推迟对脚本的解释，直到文档已经显示给用户为止<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> defer=<span class="string">"defer"</span>&gt;</span><br><span class="line">    alert(<span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>).firstChild.nodeValue);</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<p><strong>(2)async</strong><br>1.async 的定义和用法<br>2.async 属性规定一旦脚本可用，则会异步执行<br>3.async属性仅适用外部脚本（只有在使用src属性时）<br>4.如果 async=”async”：脚本相对于页面的其余部分异步地执行（当页面继续进行解析时，脚本将被执行）<br>5.如果不使用 async 且 defer=”defer”：脚本将在页面完成解析时执行<br>6.如果既不使用 async 也不使用 defer：在浏览器继续解析页面之前，立即读取并执行脚本<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"demo_async.js"</span> <span class="keyword">async</span>=<span class="string">"async"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p><strong>(1) defer,只支持IE</strong><br>    defer属性规定是否对脚本进行延迟，直到页面加载为止，有的javascript脚本document.write方法来创建当前的文档内容，其他的脚本就不一定是了<br>    如果你的脚本不会改变文档的内容，可以将defer属性加入到script标签中，以便加快处理文档的速度。因为浏览器知道它将能够安全的读取文档的剩余部分而不用执行脚本，它将推迟对脚本的解释，直到文档已经显示给用户为止<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> defer=<span class="string">"defer"</span>&gt;</span><br><span class="line">    alert(<span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>).firstChild.nodeValue);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>(2)async</strong><br>1.async 的定义和用法<br>2.async 属性规定一旦脚本可用，则会异步执行<br>3.async属性仅适用外部脚本（只有在使用src属性时）<br>4.如果 async=”async”：脚本相对于页面的其余部分异步地执行（当页面继续进行解析时，脚本将被执行）<br>5.如果不使用 async 且 defer=”defer”：脚本将在页面完成解析时执行<br>6.如果既不使用 async 也不使用 defer：在浏览器继续解析页面之前，立即读取并执行脚本<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"demo_async.js"</span> <span class="keyword">async</span>=<span class="string">"async"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <p><strong>(3)创建script,插入到DOM中</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">url, callback</span>)</span>&#123; </span><br><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement_x(<span class="string">"script"</span>) </span><br><span class="line">script.type = <span class="string">"text/javascript"</span>; </span><br><span class="line"><span class="keyword">if</span> (script.readyState)&#123; <span class="comment">//IE </span></span><br><span class="line">script.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line"><span class="keyword">if</span> (script.readyState == <span class="string">"loaded"</span> || </span><br><span class="line">script.readyState == <span class="string">"complete"</span>)&#123; </span><br><span class="line">script.onreadystatechange = <span class="literal">null</span>; </span><br><span class="line">callback(); </span><br><span class="line">&#125; </span><br><span class="line">&#125;; </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; <span class="comment">//Others: Firefox, Safari, Chrome, and Opera </span></span><br><span class="line">script.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">callback(); </span><br><span class="line">&#125;; </span><br><span class="line">&#125; </span><br><span class="line">script.src = url; </span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这种方法是在页面中script标签内，用 js 创建一个 script 元素并插入到 document 中。这样就做到了非阻塞的下载 js 代码。</p>
@@ -543,7 +543,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -560,7 +560,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

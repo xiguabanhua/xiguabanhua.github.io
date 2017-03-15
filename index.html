@@ -236,6 +236,174 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/15/编写可维护的JavaScript代码--读书笔记/" itemprop="url">
+                  编写可维护的JavaScript--读书笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-15T17:25:08+08:00" content="2017-03-15">
+              2017-03-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/15/编写可维护的JavaScript代码--读书笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/编写可维护的JavaScript代码--读书笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/15/编写可维护的JavaScript代码--读书笔记/" class="leancloud_visitors" data-flag-title="编写可维护的JavaScript--读书笔记">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h5 id="缩进层级"><a href="#缩进层级" class="headerlink" title="缩进层级"></a>缩进层级</h5><p>1.一个制表符（设置为4个空格，强制）</p>
+<h5 id="语句结尾"><a href="#语句结尾" class="headerlink" title="语句结尾"></a>语句结尾</h5><p>1.都要加分号（强制）</p>
+<h5 id="行的长度"><a href="#行的长度" class="headerlink" title="行的长度"></a>行的长度</h5><ol>
+<li>一行的长度限定在80个字符</li>
+</ol>
+<h5 id="如何空行"><a href="#如何空行" class="headerlink" title="如何空行"></a>如何空行</h5><ol>
+<li>在方法之间</li>
+<li>在方法中的局部变量和第一条语句之间</li>
+<li>在多行或者单行注释之前</li>
+<li>在方法内的逻辑片段之间插入空行，提高可阅读性</li>
+</ol>
+<h5 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h5><p>1.变量和函数 —驼峰式，变量前缀是名词，函数和方法前缀应该是动词，常见的动词 can has is get set</p>
+<p>2.常量 —全部大写</p>
+<p>3.构造函数 —首字母大写</p>
+<h5 id="对象直接量、数组直接量"><a href="#对象直接量、数组直接量" class="headerlink" title="对象直接量、数组直接量"></a>对象直接量、数组直接量</h5><ol>
+<li>直接用对象直接量，然后添加属性。取代先显式地创建Object的实例。数组也是直接建</li>
+</ol>
+<h5 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h5><p>1.for-in循环都必须使用hasOwnProperty()</p>
+<h5 id="函数变量提升"><a href="#函数变量提升" class="headerlink" title="函数变量提升"></a>函数变量提升</h5><ol>
+<li>因为函数变量提升，所以建议总是将局部变量的定义作为函数内的第一条语句，推荐合并var 语句,那些没有初始值的变量来说，它们应当出现在var的尾部</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var value = 10,</span><br><span class="line">    result = value + 10,</span><br><span class="line">    i,</span><br><span class="line">    len;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>和变量声明一样，函数声明也会被javascript引擎提前,推荐先声明javascript函数然后使用函数</li>
+</ol>
+<h5 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h5><ol>
+<li>不推荐在全局作用域下使用”use strict”,假如几个文件合并成一个文件会污染了其他文件</li>
+</ol>
+<h5 id="相等"><a href="#相等" class="headerlink" title="相等"></a>相等</h5><ol>
+<li>发生强制类型转换的场景一般是判断相等运算符==和!= console.log(5 == “5”);//true,我们规定使用 ‘===’和’!==’</li>
+</ol>
+<h5 id="零全局变量"><a href="#零全局变量" class="headerlink" title="零全局变量"></a>零全局变量</h5><ol>
+<li>实现的方法就是使用一个立即执行的函数调用并将所有脚本放置其中，使用的场景是这段不提供任何接口的单会被单独立插到一个页面中，独立开来，也不污染</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//js原生</span><br><span class="line">(function(win) &#123;</span><br><span class="line">    var doc = win.document;</span><br><span class="line">    //在这里定义其他变量</span><br><span class="line">    //其他相关代码</span><br><span class="line">&#125;)(window);</span><br><span class="line">//jq</span><br><span class="line">$(function()&#123;</span><br><span class="line">  //在这里定义其他变量</span><br><span class="line">    //其他相关代码   </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h5><ol>
+<li>在javascript中可以轻而易举地创造自己的命名空间，每个文件都需要给一个命名空间挂载东西，处理全局污染的代码一般这样子写，这样子保证最少的全局变量</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var YouGlobal = &#123;</span><br><span class="line">    namespace: function(ns) &#123;</span><br><span class="line">        var parts =ns.split(&quot;.&quot;),</span><br><span class="line">        object = this,</span><br><span class="line">        i,</span><br><span class="line">        len;</span><br><span class="line">        console.log(this);</span><br><span class="line">        for(i = 0,len = parts.length; i&lt; len; i++)&#123;</span><br><span class="line">            if(!object[parts[i]])&#123;</span><br><span class="line">                object[parts[i]] = &#123;&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            object = object[parts[i]];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return object;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用</span><br><span class="line">YouGlobal.namespace(&quot;Books.MaintainableJavaScript&quot;);</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/15/编写可维护的JavaScript代码--读书笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/12/gulp+webpack自动化构建多页面解决方案/" itemprop="url">
                   gulp+webpack自动化构建多页面解决方案
                 </a>
@@ -646,133 +814,6 @@
               阅读全文 &raquo;
             </a>
           </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/12/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-12T10:04:07+08:00" content="2017-01-12">
-              2017-01-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Technology/" itemprop="url" rel="index">
-                    <span itemprop="name">Technology</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-
-          
-          
-             <span id="/2017/01/12/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
         
       
     </div>
@@ -1709,7 +1750,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1726,7 +1767,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

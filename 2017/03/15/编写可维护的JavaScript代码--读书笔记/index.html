@@ -1,0 +1,857 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="缩进层级1.一个制表符（设置为4个空格，强制）
+语句结尾1.都要加分号（强制）
+行的长度
+一行的长度限定在80个字符
+
+如何空行
+在方法之间
+在方法中的局部变量和第一条语句之间
+在多行或者单行注释之前
+在方法内的逻辑片段之间插入空行，提高可阅读性
+
+命名1.变量和函数 —驼峰式，变量前缀是名词，函数和方法前缀应该是动词，常见的动词 can has is get set
+2.常量 —全部大写
+3.构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写可维护的JavaScript--读书笔记">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/编写可维护的JavaScript代码--读书笔记/index.html">
+<meta property="og:site_name" content="huangqin blog">
+<meta property="og:description" content="缩进层级1.一个制表符（设置为4个空格，强制）
+语句结尾1.都要加分号（强制）
+行的长度
+一行的长度限定在80个字符
+
+如何空行
+在方法之间
+在方法中的局部变量和第一条语句之间
+在多行或者单行注释之前
+在方法内的逻辑片段之间插入空行，提高可阅读性
+
+命名1.变量和函数 —驼峰式，变量前缀是名词，函数和方法前缀应该是动词，常见的动词 can has is get set
+2.常量 —全部大写
+3.构">
+<meta property="og:updated_time" content="2017-03-15T09:32:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编写可维护的JavaScript--读书笔记">
+<meta name="twitter:description" content="缩进层级1.一个制表符（设置为4个空格，强制）
+语句结尾1.都要加分号（强制）
+行的长度
+一行的长度限定在80个字符
+
+如何空行
+在方法之间
+在方法中的局部变量和第一条语句之间
+在多行或者单行注释之前
+在方法内的逻辑片段之间插入空行，提高可阅读性
+
+命名1.变量和函数 —驼峰式，变量前缀是名词，函数和方法前缀应该是动词，常见的动词 can has is get set
+2.常量 —全部大写
+3.构">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 编写可维护的JavaScript--读书笔记 | huangqin blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?a3c07c9690c109e0dc3b9ab374b20b5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">huangqin blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search" rel="section">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                编写可维护的JavaScript--读书笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-15T17:25:08+08:00" content="2017-03-15">
+              2017-03-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/15/编写可维护的JavaScript代码--读书笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/编写可维护的JavaScript代码--读书笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/15/编写可维护的JavaScript代码--读书笔记/" class="leancloud_visitors" data-flag-title="编写可维护的JavaScript--读书笔记">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="缩进层级"><a href="#缩进层级" class="headerlink" title="缩进层级"></a>缩进层级</h5><p>1.一个制表符（设置为4个空格，强制）</p>
+<h5 id="语句结尾"><a href="#语句结尾" class="headerlink" title="语句结尾"></a>语句结尾</h5><p>1.都要加分号（强制）</p>
+<h5 id="行的长度"><a href="#行的长度" class="headerlink" title="行的长度"></a>行的长度</h5><ol>
+<li>一行的长度限定在80个字符</li>
+</ol>
+<h5 id="如何空行"><a href="#如何空行" class="headerlink" title="如何空行"></a>如何空行</h5><ol>
+<li>在方法之间</li>
+<li>在方法中的局部变量和第一条语句之间</li>
+<li>在多行或者单行注释之前</li>
+<li>在方法内的逻辑片段之间插入空行，提高可阅读性</li>
+</ol>
+<h5 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h5><p>1.变量和函数 —驼峰式，变量前缀是名词，函数和方法前缀应该是动词，常见的动词 can has is get set</p>
+<p>2.常量 —全部大写</p>
+<p>3.构造函数 —首字母大写</p>
+<h5 id="对象直接量、数组直接量"><a href="#对象直接量、数组直接量" class="headerlink" title="对象直接量、数组直接量"></a>对象直接量、数组直接量</h5><ol>
+<li>直接用对象直接量，然后添加属性。取代先显式地创建Object的实例。数组也是直接建</li>
+</ol>
+<h5 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h5><p>1.for-in循环都必须使用hasOwnProperty()</p>
+<h5 id="函数变量提升"><a href="#函数变量提升" class="headerlink" title="函数变量提升"></a>函数变量提升</h5><ol>
+<li>因为函数变量提升，所以建议总是将局部变量的定义作为函数内的第一条语句，推荐合并var 语句,那些没有初始值的变量来说，它们应当出现在var的尾部</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var value = 10,</span><br><span class="line">    result = value + 10,</span><br><span class="line">    i,</span><br><span class="line">    len;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>和变量声明一样，函数声明也会被javascript引擎提前,推荐先声明javascript函数然后使用函数</li>
+</ol>
+<h5 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h5><ol>
+<li>不推荐在全局作用域下使用”use strict”,假如几个文件合并成一个文件会污染了其他文件</li>
+</ol>
+<h5 id="相等"><a href="#相等" class="headerlink" title="相等"></a>相等</h5><ol>
+<li>发生强制类型转换的场景一般是判断相等运算符==和!= console.log(5 == “5”);//true,我们规定使用 ‘===’和’!==’</li>
+</ol>
+<h5 id="零全局变量"><a href="#零全局变量" class="headerlink" title="零全局变量"></a>零全局变量</h5><ol>
+<li>实现的方法就是使用一个立即执行的函数调用并将所有脚本放置其中，使用的场景是这段不提供任何接口的单会被单独立插到一个页面中，独立开来，也不污染</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//js原生</span><br><span class="line">(function(win) &#123;</span><br><span class="line">    var doc = win.document;</span><br><span class="line">    //在这里定义其他变量</span><br><span class="line">    //其他相关代码</span><br><span class="line">&#125;)(window);</span><br><span class="line">//jq</span><br><span class="line">$(function()&#123;</span><br><span class="line">  //在这里定义其他变量</span><br><span class="line">    //其他相关代码   </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h5><ol>
+<li>在javascript中可以轻而易举地创造自己的命名空间，每个文件都需要给一个命名空间挂载东西，处理全局污染的代码一般这样子写，这样子保证最少的全局变量</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var YouGlobal = &#123;</span><br><span class="line">    namespace: function(ns) &#123;</span><br><span class="line">        var parts =ns.split(&quot;.&quot;),</span><br><span class="line">        object = this,</span><br><span class="line">        i,</span><br><span class="line">        len;</span><br><span class="line">        console.log(this);</span><br><span class="line">        for(i = 0,len = parts.length; i&lt; len; i++)&#123;</span><br><span class="line">            if(!object[parts[i]])&#123;</span><br><span class="line">                object[parts[i]] = &#123;&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            object = object[parts[i]];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return object;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用</span><br><span class="line">YouGlobal.namespace(&quot;Books.MaintainableJavaScript&quot;);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h5 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h5><ol>
+<li>应用逻辑和所有事件处理程序中需要抽离出来，好的做法</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var MyApplication = &#123;</span><br><span class="line">    handleClick: function(event) &#123;</span><br><span class="line">        </span><br><span class="line">        //假设事件支持DOM LEVEL2</span><br><span class="line">        event.preventDefault();</span><br><span class="line">        event.stopPropagation();</span><br><span class="line">        </span><br><span class="line">        //传入应用逻辑</span><br><span class="line">        this.showPopup(event.clientX, event.clientY);</span><br><span class="line">    &#125;</span><br><span class="line">    showPopup: function(x, y) &#123;</span><br><span class="line">        var popup = document.getElementById(&quot;popup&quot;);</span><br><span class="line">        popup.style.left = x + &quot;px&quot;;</span><br><span class="line">        popup.style.top = y + &quot;px&quot;;</span><br><span class="line">        popup.className = &quot;releal&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">addListener(element, &quot;click&quot;, function(event) &#123;</span><br><span class="line">    MyApplication.handleClick(event);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="避免空比较"><a href="#避免空比较" class="headerlink" title="避免空比较"></a>避免空比较</h4><h5 id="检测原始值"><a href="#检测原始值" class="headerlink" title="检测原始值"></a>检测原始值</h5><ol>
+<li>如果你希望一个值是字符床、数字、布尔值或者undefined,最佳选择是使用typeof运算符会发挥一个表示值的类型的字符串 推荐无符号运算符的写法</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typeof name === &quot;string&quot;</span><br><span class="line">//编程时要杜绝使用typeof来检测null的类型因为</span><br><span class="line">console.log(typeof null); //&quot;object&quot;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>如果你需要检测null,则直接使用恒等运算符（===）或者非恒等运算符（!==）</li>
+<li>检测函数最好的方法是typeof</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof function()&#123;&#125; //&quot;function&quot;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>判断数组</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array.isArray([1,2]) //true</span><br></pre></td></tr></table></figure>
+<ol>
+<li>检测实例对象的某个属性是否存在</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(&quot;related&quot; in object)&#123;&#125;</span><br><span class="line">if(object.hasOwnProperty(&quot;related&quot;))&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="将配置数据从代码中分离出来"><a href="#将配置数据从代码中分离出来" class="headerlink" title="将配置数据从代码中分离出来"></a>将配置数据从代码中分离出来</h4><h5 id="抽离配置数据"><a href="#抽离配置数据" class="headerlink" title="抽离配置数据"></a>抽离配置数据</h5><ol>
+<li>尽量的把一些配置写到config上，不要掺杂在javascript代码中</li>
+</ol>
+<h4 id="抛出错误"><a href="#抛出错误" class="headerlink" title="抛出错误"></a>抛出错误</h4><h5 id="try-catch"><a href="#try-catch" class="headerlink" title="try-catch"></a>try-catch</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    somethingThatMightCauseAnError();//比如进行读文件的操作</span><br><span class="line">&#125;catch(ex) &#123;</span><br><span class="line">       //千万不要将try-catch中的catch留空，应该写点什么来处理错误</span><br><span class="line">       </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="浏览器嗅探"><a href="#浏览器嗅探" class="headerlink" title="浏览器嗅探"></a>浏览器嗅探</h5><ol>
+<li>User-Agent 检测浏览器并不总是提供它们原始的user-agent字符串几乎所有得浏览器都可以使用现成的工具来修改用户代理。开发者往往会担心这一点会导致用户代理检测失效，现成的工具来修改用户代理。</li>
+<li>特性检测 使用特性检测是正确和恰当的，因为代码对特性做检测，当特性存在时才使用，首先检测document.getElementById等。</li>
+<li>如果你想使用用户代理嗅探，记住者一点：这么在做唯一安全的方式是针对旧的或者特定版本的浏览器，而绝不应当针对最新版本或者未来的浏览器。尽量的使用特性检测。</li>
+</ol>
+<h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><ol>
+<li>基于对象继承</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">    name: &quot;huangqin&quot;,</span><br><span class="line">    sayname: function() &#123;</span><br><span class="line">        alert(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var myPerson = Object.create(person);</span><br><span class="line">myPerson.sayName();//弹出“huangqin”</span><br><span class="line">myPerson.sayName = function() &#123;</span><br><span class="line">    alert(&quot;liuyongle&quot;);</span><br><span class="line">&#125;</span><br><span class="line">myPerson.sayName();//弹出“liuyongle”</span><br><span class="line">person.sayName();//弹出“huangqin”</span><br><span class="line">//重新定义myPerson.sayName()会自动切断对person.sayName()的访问</span><br></pre></td></tr></table></figure>
+<ol>
+<li>基于类的继承</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//基于类的继承是从一个已知的对象继承，这里的继承是依赖于原型的，因此，基于类的继//承的通过构造函数实现的，而非对象。这意味着，需要访问被继承对象的构造函数。</span><br><span class="line"></span><br><span class="line">function MyError(message) &#123;</span><br><span class="line">    this.message = message;</span><br><span class="line">&#125;</span><br><span class="line">MyError.prototype = new Error();</span><br></pre></td></tr></table></figure>
+<h4 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h4><p>1.略，看一下之前我写的前端自动化构建工具</p>
+<h4 id="文件和目录结构"><a href="#文件和目录结构" class="headerlink" title="文件和目录结构"></a>文件和目录结构</h4><ol>
+<li>建一个项目工程的步骤：建好文件和目录结构、文件的构建、验证、合并、加工，文件的精简和压缩</li>
+<li><p>文件精简的工具： <a href="http://github.com/jayli/TPacker" target="_blank" rel="external">http://github.com/jayli/TPacker</a></p>
+<h5 id="服务器端的控制"><a href="#服务器端的控制" class="headerlink" title="服务器端的控制"></a>服务器端的控制</h5></li>
+<li><p>现在浏览器都支持HTTP压缩并且都会发送一个HTTP头作为请求的一部分 ，指明压缩类型，例如 Accet-Encoding:gzip, deflate .</p>
+</li>
+<li>apache 2 和nginx是最受欢迎的WEB服务器之二，都对gzip作为http压缩。</li>
+</ol>
+<h4 id="文档化"><a href="#文档化" class="headerlink" title="文档化"></a>文档化</h4><p>1.选择markdown风格的文档编辑</p>
+<h4 id="自动化测试"><a href="#自动化测试" class="headerlink" title="自动化测试"></a>自动化测试</h4><ol>
+<li>编制打包计划</li>
+<li>开发版本的构建</li>
+<li>集成版本的构建</li>
+<li>发布版本的构建</li>
+</ol>
+<h4 id="组装在一起"><a href="#组装在一起" class="headerlink" title="组装在一起"></a>组装在一起</h4><ol>
+<li>jenkins CI系统 持续集成是频繁、持续地在多个团短成员的工作中进行集成，并且给予反馈</li>
+</ol>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习/" rel="tag">#学习</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/12/gulp+webpack自动化构建多页面解决方案/" rel="next" title="gulp+webpack自动化构建多页面解决方案">
+                <i class="fa fa-chevron-left"></i> gulp+webpack自动化构建多页面解决方案
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/03/15/编写可维护的JavaScript代码--读书笔记/"
+     data-title="编写可维护的JavaScript--读书笔记"
+     data-content=""
+     data-url="http://yoursite.com/2017/03/15/编写可维护的JavaScript代码--读书笔记/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/15/编写可维护的JavaScript代码--读书笔记/"
+           data-title="编写可维护的JavaScript--读书笔记" data-url="http://yoursite.com/2017/03/15/编写可维护的JavaScript代码--读书笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="huangqin" />
+          <p class="site-author-name" itemprop="name">huangqin</p>
+          <p class="site-description motion-element" itemprop="description">执着的一像素</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#缩进层级"><span class="nav-number">1.</span> <span class="nav-text">缩进层级</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#语句结尾"><span class="nav-number">2.</span> <span class="nav-text">语句结尾</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#行的长度"><span class="nav-number">3.</span> <span class="nav-text">行的长度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何空行"><span class="nav-number">4.</span> <span class="nav-text">如何空行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命名"><span class="nav-number">5.</span> <span class="nav-text">命名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对象直接量、数组直接量"><span class="nav-number">6.</span> <span class="nav-text">对象直接量、数组直接量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#for-in循环"><span class="nav-number">7.</span> <span class="nav-text">for-in循环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数变量提升"><span class="nav-number">8.</span> <span class="nav-text">函数变量提升</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#严格模式"><span class="nav-number">9.</span> <span class="nav-text">严格模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相等"><span class="nav-number">10.</span> <span class="nav-text">相等</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#零全局变量"><span class="nav-number">11.</span> <span class="nav-text">零全局变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命名空间"><span class="nav-number">12.</span> <span class="nav-text">命名空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事件处理"><span class="nav-number">13.</span> <span class="nav-text">事件处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#避免空比较"><span class="nav-number"></span> <span class="nav-text">避免空比较</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#检测原始值"><span class="nav-number">1.</span> <span class="nav-text">检测原始值</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将配置数据从代码中分离出来"><span class="nav-number"></span> <span class="nav-text">将配置数据从代码中分离出来</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#抽离配置数据"><span class="nav-number">1.</span> <span class="nav-text">抽离配置数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抛出错误"><span class="nav-number"></span> <span class="nav-text">抛出错误</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#try-catch"><span class="nav-number">1.</span> <span class="nav-text">try-catch</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#浏览器嗅探"><span class="nav-number">2.</span> <span class="nav-text">浏览器嗅探</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#继承"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动化"><span class="nav-number"></span> <span class="nav-text">自动化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件和目录结构"><span class="nav-number"></span> <span class="nav-text">文件和目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#服务器端的控制"><span class="nav-number">1.</span> <span class="nav-text">服务器端的控制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文档化"><span class="nav-number"></span> <span class="nav-text">文档化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动化测试"><span class="nav-number"></span> <span class="nav-text">自动化测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组装在一起"><span class="nav-number"></span> <span class="nav-text">组装在一起</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">huangqin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangqin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("q6qHjBC0RUJzTVHyfow8NWHf-gzGzoHsz", "G5vwD0kelGYQJb5yrvvsbnj9");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
